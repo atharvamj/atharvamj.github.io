@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- REPLACE: Update the title with your name -->
+    <title>Atharva Mahesh Joshi — Data Scientist & LLM Engineer</title>
+    <!-- REPLACE: Update the meta description with your own summary -->
+    <meta name="description"
+        content="Portfolio of Atharva Mahesh Joshi — Data Scientist specializing in scalable analytics, LLMs, and automated moderation systems." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- =========================================
+       NAVIGATION
+       ========================================= -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <!-- REPLACE: Your name or logo text -->
+            <a href="#hero" class="nav-logo">
+                <span class="logo-bracket">&lt;</span>AMJ<span class="logo-bracket"> /&gt;</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#recognition">Recognition</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#articles">Articles</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- =========================================
+       HERO / INTRODUCTION
+       ========================================= -->
+    <section id="hero" class="hero">
+        <!-- Neural network canvas background -->
+        <canvas id="neuralCanvas"></canvas>
+        <div class="hero-bg-grid"></div>
+
+        <div class="container hero-content">
+            <div class="hero-photo animate-in">
+                <!-- REPLACE: path to your photo — put your photo in this folder and update the src -->
+                <img src="photo.jpg" alt="Profile photo of Atharva Mahesh Joshi" />
+                <div class="photo-ring"></div>
+                <div class="photo-ring photo-ring-2"></div>
+            </div>
+            <div class="hero-text animate-in">
+                <!-- REPLACE: Your name -->
+                <h1 class="glitch-text" data-text="Atharva Mahesh Joshi">Atharva Mahesh Joshi</h1>
+                <!-- REPLACE: Your title -->
+                <p class="hero-title">
+                    <span class="terminal-prompt">&gt; </span>
+                    <span id="typingText"></span>
+                    <span class="cursor-blink">|</span>
+                </p>
+                <p class="hero-bio">
+                    Data Scientist and LLM Engineer who builds AI systems that actually understand your data.
+                    I architect RAG pipelines, fine-tune language models, and design agentic workflows that turn
+                    messy, unstructured information into clear answers. Whether that's semantic search across
+                    thousands of documents, real-time content moderation, or conversational AI that reasons
+                    over live datasets. From prompt engineering to production ML, I ship intelligent systems
+                    that make complex data accessible and actionable.
+                </p>
+                <div class="hero-socials">
+                    <!-- GitHub -->
+                    <a href="https://github.com/atharvamj" target="_blank" rel="noopener"
+                        class="social-btn magnetic-btn" aria-label="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.21 3.438 9.63 8.205 11.19.6.11.82-.26.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.73.083-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23a11.5 11.5 0 0 1 3.005-.404c1.02.005 2.045.138 3.005.404 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.21.694.825.576C20.565 21.917 24 17.505 24 12.29 24 5.78 18.627.5 12 .5z" />
+                        </svg>
+                    </a>
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/atharva-joshi-0806/" target="_blank" rel="noopener"
+                        class="social-btn magnetic-btn" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                    </a>
+                    <!-- Kaggle -->
+                    <a href="https://www.kaggle.com/atharvmj082k" target="_blank" rel="noopener"
+                        class="social-btn magnetic-btn" aria-label="Kaggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.281.18.046.149.034.238-.04.27l-6.956 6.862 7.279 8.376c.073.1.086.192.04.27z" />
+                        </svg>
+                    </a>
+                    <!-- Email -->
+                    <a href="mailto:inboxofatharvajoshi@gmail.com" class="social-btn magnetic-btn" aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="4" width="20" height="16" rx="2" />
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator">
+            <div class="scroll-mouse">
+                <div class="scroll-dot"></div>
+            </div>
+            <span>scroll</span>
+        </div>
+    </section>
+
+    <!-- =========================================
+       EDUCATION
+       ========================================= -->
+    <section id="education" class="section">
+        <div class="container">
+            <h2 class="section-title animate-in">
+                <span class="section-number">01.</span> Education
+            </h2>
+            <div class="education-grid">
+
+                <div class="card edu-card animate-in" style="--delay: 0">
+                    <div class="edu-icon">🎓</div>
+                    <div class="edu-content">
+                        <h3>Indiana University – Bloomington</h3>
+                        <p class="card-role">Master of Science in Data Science</p>
+                        <p class="card-meta">Graduated May 2025 &middot; GPA: 3.90</p>
+                    </div>
+                </div>
+
+                <div class="card edu-card animate-in" style="--delay: 1">
+                    <div class="edu-icon">🎓</div>
+                    <div class="edu-content">
+                        <h3>Dr. Vishwanath Karad MIT World Peace University</h3>
+                        <p class="card-role">B.Tech in Electronics &amp; Communications Engineering</p>
+                        <p class="card-meta">Graduated Oct 2022 &middot; GPA: 3.91 &middot; India</p>
+                    </div>
+                </div>
+
+                <!-- ADD MORE: copy this card block to add new education -->
+                <!--
+        <div class="card edu-card animate-in" style="--delay: 2">
+          <div class="edu-icon">🎓</div>
+          <div class="edu-content">
+            <h3>University Name</h3>
+            <p class="card-role">Degree Name</p>
+            <p class="card-meta">Year &middot; GPA &middot; Location</p>
+          </div>
+        </div>
+        -->
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+       EXPERIENCE
+       ========================================= -->
+    <section id="experience" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title animate-in">
+                <span class="section-number">02.</span> Work Experience
+            </h2>
+            <div class="timeline">
+
+                <!-- Experience Card 1 -->
+                <div class="timeline-item animate-in" style="--delay: 0">
+                    <div class="timeline-dot">
+                        <div class="dot-pulse"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><a href="https://smartcharity.com/about/team" target="_blank" rel="noopener">SMART
+                                    CHARITY</a></h3>
+                            <p class="card-role">Data Scientist</p>
+                            <p class="card-meta">Jun 2025 – Present &middot; Bloomington, IN (Remote)</p>
+                        </div>
+                        <p class="card-summary">
+                            Deploying large language models in production to reimagine how nonprofits are discovered and
+                            vetted.
+                            Collaborating with cross-functional teams to build intelligent classification systems,
+                            automate data quality pipelines across <strong>1.2 Million records</strong>, and translate
+                            complex
+                            behavioral signals into strategies that drive real impact.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Experience Card 2 -->
+                <div class="timeline-item animate-in" style="--delay: 1">
+                    <div class="timeline-dot">
+                        <div class="dot-pulse"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><a href="https://project990.org/team" target="_blank" rel="noopener">Project 990</a>
+                            </h3>
+                            <p class="card-role">Research Assistant – Data Science</p>
+                            <p class="card-meta">Oct 2024 – Present &middot; Bloomington, IN (Onsite)</p>
+                        </div>
+                        <p class="card-summary">
+                            Partnered with researchers to deploy an <strong>explainable ML recommender</strong> that
+                            connected nonprofits to <strong>$60K in grants</strong>. Owned the full data lifecycle,
+                            from building models on <strong>600K+ records</strong> to delivering executive dashboards
+                            that shaped funding strategy.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Experience Card 3 -->
+                <div class="timeline-item animate-in" style="--delay: 2">
+                    <div class="timeline-dot">
+                        <div class="dot-pulse"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>HYPHENOVA NETWORK</h3>
+                            <p class="card-role">Data Science Intern</p>
+                            <p class="card-meta">May 2024 – &middot; Los Angeles, CA (Hybrid)</p>
+                        </div>
+                        <p class="card-summary">
+                            Deployed <strong>BERT and RoBERTa</strong> transformer models into production for
+                            automated content moderation, pushing accuracy to <strong>93%</strong> and eliminating
+                            <strong>80%</strong> of manual review. Architected real-time AWS pipelines to detect
+                            platform abuse at scale, working closely with engineering and policy teams.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Experience Card 4 -->
+                <div class="timeline-item animate-in" style="--delay: 3">
+                    <div class="timeline-dot">
+                        <div class="dot-pulse"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>DELOITTE USI</h3>
+                            <p class="card-role">Data Analyst</p>
+                            <p class="card-meta">Dec 2022 – Mar 2023 &middot; Hyderabad, India (Onsite)</p>
+                        </div>
+                        <p class="card-summary">
+                            Tackled financial fraud detection by building <strong>explainable ML models</strong> with
+                            SHAP interpretability for stakeholder trust. Collaborated across <strong>5+ data
+                                teams</strong>
+                            to unify siloed systems into a single analytics layer, directly reducing customer churn
+                            and driving retention strategy.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Experience Card 5 -->
+                <div class="timeline-item animate-in" style="--delay: 4">
+                    <div class="timeline-dot">
+                        <div class="dot-pulse"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>DOCK-Y TECH LIMITED</h3>
+                            <p class="card-role">Machine Learning Engineer Intern</p>
+                            <p class="card-meta">Apr 2021 – Jul 2021 &middot; Coventry, UK (Remote)</p>
+                        </div>
+                        <p class="card-summary">
+                            Solved real-time <strong>collision detection</strong> for autonomous vehicles, pushing
+                            model accuracy from <strong>66% to 90%</strong> through multi-sensor fusion.
+                            Collaborated with hardware teams to stress-test models under extreme conditions,
+                            cutting false positives by <strong>28%</strong> before deployment.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ADD MORE: copy this card block to add new experience -->
+                <!--
+        <div class="timeline-item animate-in" style="--delay: 5">
+          <div class="timeline-dot">
+            <div class="dot-pulse"></div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h3>COMPANY NAME</h3>
+              <p class="card-role">Your Role</p>
+              <p class="card-meta">Start – End &middot; City, State</p>
+            </div>
+            <ul class="card-bullets">
+              <li>Highlight 1</li>
+              <li>Highlight 2</li>
+              <li>Highlight 3</li>
+            </ul>
+          </div>
+        </div>
+        -->
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+       RECOGNITION
+       ========================================= -->
+    <section id="recognition" class="section">
+        <div class="container">
+            <h2 class="section-title animate-in">
+                <span class="section-number">03.</span> Recognition
+            </h2>
+            <div class="recognition-list">
+
+                <div class="card pub-card animate-in" style="--delay: 0">
+                    <div class="pub-icon">🌟</div>
+                    <div class="pub-content">
+                        <h3>Team Member Spotlight — SMART CHARITY</h3>
+                        <p class="pub-meta">Posted by Brad R. Fulton &middot; 2025</p>
+                        <p class="pub-desc">
+                            "Atharva Mahesh Joshi is the newest member of our team, and he is a remarkably quick learner
+                            (and skilled teacher). He's adeptly applying his language modeling skills to the field of
+                            philanthropy. He also possesses a keen ability to explain complex concepts in accessible
+                            terms."
+                        </p>
+                        <div class="card-links">
+                            <a href="https://www.linkedin.com/posts/bradrfulton_team-member-spotlight-atharva-mahesh-activity-7407284673439158272-Oewz"
+                                target="_blank" rel="noopener">
+                                <span class="link-arrow">→</span> View on LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+       PROJECTS
+       ========================================= -->
+    <section id="projects" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title animate-in">
+                <span class="section-number">04.</span> Projects
+            </h2>
+            <div class="project-grid">
+
+                <!-- Project Card 1: Spreadsheet RAG -->
+                <div class="card project-card animate-in" style="--delay: 0">
+                    <div class="card-glow"></div>
+                    <h3>Spreadsheet RAG Assistant</h3>
+                    <p class="project-desc">
+                        AI-powered spreadsheet explorer built with Flask + Ollama. Upload CSV, Excel, or Parquet files,
+                        explore with auto-detected filters and pagination, and ask natural language questions powered
+                        by a local LLM with multi-turn conversation and markdown-formatted RAG responses.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Flask</span>
+                        <span class="tag">Ollama</span>
+                        <span class="tag">RAG</span>
+                        <span class="tag">LLM</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="https://github.com/atharvamj/spreadsheet_rag" target="_blank" rel="noopener">
+                            <span class="link-arrow">→</span> GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project Card 2: Enterprise Document Intelligence -->
+                <div class="card project-card animate-in" style="--delay: 1">
+                    <div class="card-glow"></div>
+                    <h3>Enterprise Document Intelligence</h3>
+                    <p class="project-desc">
+                        RAG pipeline integrating LLaMA 3 with FAISS for intelligent document retrieval,
+                        processing 10K+ financial documents with context-aware querying and semantic search.
+                        Achieved 32% improvement in accuracy through iterative prompt refinement.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">LLaMA 3</span>
+                        <span class="tag">FAISS</span>
+                        <span class="tag">NLP</span>
+                        <span class="tag">RAG</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="https://github.com/atharvamj/enterprise-document-intelligence" target="_blank"
+                            rel="noopener">
+                            <span class="link-arrow">→</span> GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project Card 3: Spoiler Detection Using BERT -->
+                <div class="card project-card animate-in" style="--delay: 2">
+                    <div class="card-glow"></div>
+                    <h3>Movie Spoiler Detection (BERT)</h3>
+                    <p class="project-desc">
+                        ML system for detecting spoilers in movie reviews using a custom BERT model achieving 75.42%
+                        accuracy.
+                        Trained on the IMDB Spoiler dataset with TF-IDF baselines (Decision Tree, Naïve Bayes) for
+                        comparison.
+                        Includes a Flask web app for real-time predictions.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">BERT</span>
+                        <span class="tag">NLP</span>
+                        <span class="tag">Flask</span>
+                        <span class="tag">TF-IDF</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="https://github.com/atharvamj/Spoiler-Detection-Using-BERT" target="_blank"
+                            rel="noopener">
+                            <span class="link-arrow">→</span> GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project Card 4: Crowd Density Using Thermal Camera -->
+                <div class="card project-card animate-in" style="--delay: 3">
+                    <div class="card-glow"></div>
+                    <h3>Crowd Analytics via Thermal Imaging</h3>
+                    <p class="project-desc">
+                        Real-time crowd density estimation using thermal imaging and object detection algorithms
+                        deployed on edge computing devices. Designed for public safety monitoring irrespective
+                        of lighting conditions, enabling rapid people-count estimates without centralized servers.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">Edge AI</span>
+                        <span class="tag">Object Detection</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="https://github.com/atharvamj/Crowd-Density-Using-Thermal-Camera" target="_blank"
+                            rel="noopener">
+                            <span class="link-arrow">→</span> GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project Card 5: Cirrhosis Prediction -->
+                <div class="card project-card animate-in" style="--delay: 4">
+                    <div class="card-glow"></div>
+                    <h3>Cirrhosis Stage Prediction</h3>
+                    <p class="project-desc">
+                        Multi-class classification model for predicting cirrhosis patient outcomes
+                        using clinical features. Explores feature engineering, model selection, and evaluation
+                        on medical tabular data with Jupyter Notebook-based analysis.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Scikit-Learn</span>
+                        <span class="tag">Classification</span>
+                        <span class="tag">Healthcare ML</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="https://github.com/atharvamj/Cirrohsis_Prediction" target="_blank" rel="noopener">
+                            <span class="link-arrow">→</span> GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project Card 6: Spaceship Titanic -->
+                <div class="card project-card animate-in" style="--delay: 5">
+                    <div class="card-glow"></div>
+                    <h3>Spaceship Titanic (Kaggle)</h3>
+                    <p class="project-desc">
+                        Kaggle competition solution for the Spaceship Titanic challenge — predicting which passengers
+                        were transported to an alternate dimension. Features EDA, feature engineering,
+                        and ensemble classification techniques.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Kaggle</span>
+                        <span class="tag">EDA</span>
+                        <span class="tag">Classification</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="https://github.com/atharvamj/Spaceship-Titanic" target="_blank" rel="noopener">
+                            <span class="link-arrow">→</span> GitHub
+                        </a>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+       SKILLS
+       ========================================= -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title animate-in">
+                <span class="section-number">05.</span> Skills
+            </h2>
+            <div class="skills-grid">
+
+                <div class="card skill-card animate-in" style="--delay: 0">
+                    <div class="skill-icon">💻</div>
+                    <h3>Programming</h3>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">R</span>
+                        <span class="tag">SQL</span>
+                    </div>
+                </div>
+
+                <div class="card skill-card animate-in" style="--delay: 1">
+                    <div class="skill-icon">🧠</div>
+                    <h3>Machine Learning</h3>
+                    <div class="tags">
+                        <span class="tag">TensorFlow</span>
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">Scikit-Learn</span>
+                        <span class="tag">LangChain</span>
+                        <span class="tag">NLP</span>
+                    </div>
+                </div>
+
+                <div class="card skill-card animate-in" style="--delay: 2">
+                    <div class="skill-icon">📊</div>
+                    <h3>Data &amp; Analytics</h3>
+                    <div class="tags">
+                        <span class="tag">Pandas</span>
+                        <span class="tag">NumPy</span>
+                        <span class="tag">Tableau</span>
+                        <span class="tag">Power BI</span>
+                        <span class="tag">Statistical Analysis</span>
+                        <span class="tag">A/B Testing</span>
+                    </div>
+                </div>
+
+                <div class="card skill-card animate-in" style="--delay: 3">
+                    <div class="skill-icon">☁️</div>
+                    <h3>Infrastructure</h3>
+                    <div class="tags">
+                        <span class="tag">AWS (S3, EC2)</span>
+                        <span class="tag">Azure</span>
+                        <span class="tag">Databricks</span>
+                        <span class="tag">Spark</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">Git</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">REST API</span>
+                        <span class="tag">MCP</span>
+                        <span class="tag">N8N</span>
+                    </div>
+                </div>
+
+                <div class="card skill-card animate-in" style="--delay: 4">
+                    <div class="skill-icon">🎯</div>
+                    <h3>Specializations</h3>
+                    <div class="tags">
+                        <span class="tag">Abuse Detection</span>
+                        <span class="tag">Fraud Detection</span>
+                        <span class="tag">Language Modeling</span>
+                        <span class="tag">Customer Analytics</span>
+                        <span class="tag">Recommendation Systems</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+       PUBLICATIONS
+       ========================================= -->
+    <section id="publications" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title animate-in">
+                <span class="section-number">06.</span> Publications
+            </h2>
+            <div class="publications-list">
+
+                <!-- Publication 1 -->
+                <div class="card pub-card animate-in" style="--delay: 0">
+                    <div class="pub-icon">📄</div>
+                    <div class="pub-content">
+                        <h3>A Comprehensive Comparison Between Pre-trained and Custom Trained Object Detection Model for
+                            Indian Traffic Scenarios</h3>
+                        <p class="pub-meta">Intelligent Systems and Applications: Select Proceedings of ICISA 2022
+                            (Springer) &middot; 2023 &middot; Cited by 2</p>
+                        <p class="pub-desc">Comparative study of pre-trained vs. custom-trained object detection models
+                            evaluated on Indian traffic datasets, analyzing accuracy, inference speed, and real-world
+                            deployment feasibility.</p>
+                        <div class="card-links">
+                            <a href="https://link.springer.com/chapter/10.1007/978-981-19-6581-4_17" target="_blank"
+                                rel="noopener">
+                                <span class="link-arrow">→</span> Read Paper
+                            </a>
+                            <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sqDbT3oAAAAJ&citation_for_view=sqDbT3oAAAAJ:u5HHmVD_uO8C"
+                                target="_blank" rel="noopener">
+                                <span class="link-arrow">→</span> Google Scholar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication 2 -->
+                <div class="card pub-card animate-in" style="--delay: 1">
+                    <div class="pub-icon">📄</div>
+                    <div class="pub-content">
+                        <h3>Evaluation of Transformer Model for Conversational Chatbots Using Cosine Similarity</h3>
+                        <p class="pub-meta">IJRASET &middot; A. Joshi, A. Kulkarni, M. Addepalli</p>
+                        <p class="pub-desc">Evaluation of transformer-based architectures for building conversational
+                            chatbots, leveraging cosine similarity metrics to measure response quality and semantic
+                            relevance across dialogue turns.</p>
+                        <div class="card-links">
+                            <a href="https://www.academia.edu/download/94013012/Aniket_IJRASET.pdf" target="_blank"
+                                rel="noopener">
+                                <span class="link-arrow">→</span> Read Paper (PDF)
+                            </a>
+                            <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sqDbT3oAAAAJ&citation_for_view=sqDbT3oAAAAJ:u-x6o8ySG0sC"
+                                target="_blank" rel="noopener">
+                                <span class="link-arrow">→</span> Google Scholar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ADD MORE: copy this block to add new publications -->
+                <!--
+        <div class="card pub-card animate-in" style="--delay: 2">
+          <div class="pub-icon">📄</div>
+          <div class="pub-content">
+            <h3>Publication Title</h3>
+            <p class="pub-meta">Journal / Conference &middot; Year</p>
+            <p class="pub-desc">Brief description or abstract.</p>
+            <div class="card-links">
+              <a href="#" target="_blank" rel="noopener">
+                <span class="link-arrow">→</span> Read Paper
+              </a>
+            </div>
+          </div>
+        </div>
+        -->
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+       LINKEDIN ARTICLES
+       ========================================= -->
+    <section id="articles" class="section">
+        <div class="container">
+            <h2 class="section-title animate-in">
+                <span class="section-number">07.</span> LinkedIn Articles
+            </h2>
+            <div class="project-grid">
+
+                <!-- Article Card 1 -->
+                <div class="card project-card animate-in" style="--delay: 0">
+                    <div class="card-glow"></div>
+                    <h3>How PICa and GPT-3 are Transforming VQA with Knowledge-Driven Approaches</h3>
+                    <p class="project-desc">
+                        Exploring how PICa leverages GPT-3's few-shot capabilities to inject external knowledge
+                        into Visual Question Answering pipelines, achieving state-of-the-art results on
+                        knowledge-intensive VQA benchmarks without task-specific fine-tuning.
+                    </p>
+                    <p class="card-date">September 30, 2024</p>
+                    <div class="card-links">
+                        <a href="https://www.linkedin.com/in/atharva-joshi-0806/recent-activity/articles/"
+                            target="_blank" rel="noopener">
+                            <span class="link-arrow">→</span> Read on LinkedIn
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Article Card 2 -->
+                <div class="card project-card animate-in" style="--delay: 1">
+                    <div class="card-glow"></div>
+                    <h3>Exploring Graph-Based Models for Visual Question Answering (VQA)</h3>
+                    <p class="project-desc">
+                        A deep dive into how graph neural networks and scene graph representations
+                        capture spatial relationships between objects, enabling more structured and
+                        interpretable reasoning for Visual Question Answering tasks.
+                    </p>
+                    <p class="card-date">September 21, 2024</p>
+                    <div class="card-links">
+                        <a href="https://www.linkedin.com/in/atharva-joshi-0806/recent-activity/articles/"
+                            target="_blank" rel="noopener">
+                            <span class="link-arrow">→</span> Read on LinkedIn
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ADD MORE: copy this card block to add new articles -->
+                <!--
+        <div class="card project-card animate-in" style="--delay: 2">
+          <div class="card-glow"></div>
+          <h3>Article Title</h3>
+          <p class="project-desc">Short excerpt or description.</p>
+          <p class="card-date">Month Year</p>
+          <div class="card-links">
+            <a href="https://linkedin.com/pulse/your-article" target="_blank" rel="noopener">
+              <span class="link-arrow">→</span> Read on LinkedIn
+            </a>
+          </div>
+        </div>
+        -->
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+       FOOTER
+       ========================================= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Atharva Mahesh Joshi</p>
+                <p class="footer-tagline">Built with <span class="accent">neural networks</span> and ☕</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating data particles overlay -->
+    <canvas id="particleCanvas"></canvas>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
