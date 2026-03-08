@@ -415,3 +415,186 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+/* ===========================================
+   AI TIC-TAC-TOE GAME
+   Minimax algorithm with difficulty levels
+   =========================================== */
+(function () {
+    const HUMAN = 'X';
+    const AI = 'O';
+    const WIN_COMBOS = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
+        [0, 4, 8], [2, 4, 6]
+    ];
+
+    let board = Array(9).fill(null);
+    let gameActive = true;
+    let difficulty = 'hard';
+    let scores = { player: 0, ai: 0, draw: 0 };
+
+    const cells = document.querySelectorAll('.board-cell');
+    const statusEl = document.getElementById('gameStatus');
+    const resetBtn = document.getElementById('gameReset');
+    const playerScoreEl = document.getElementById('playerScore');
+    const aiScoreEl = document.getElementById('aiScore');
+    const drawScoreEl = document.getElementById('drawScore');
+    const diffBtns = document.querySelectorAll('.diff-btn');
+
+    if (!cells.length) return; // guard if section doesn't exist
+
+    // Difficulty buttons
+    diffBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            diffBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            difficulty = btn.dataset.diff;
+            resetGame();
+        });
+    });
+
+    // Cell click
+    cells.forEach(cell => {
+        cell.addEventListener('click', () => {
+            const idx = parseInt(cell.dataset.cell);
+            if (board[idx] || !gameActive) return;
+            makeMove(idx, HUMAN);
+            if (gameActive) {
+                gameActive = false; // lock while AI thinks
+                statusEl.textContent = 'AI is thinking...';
+                statusEl.className = 'game-status';
+                setTimeout(() => {
+                    const aiMove = getBestMove();
+                    makeMove(aiMove, AI);
+                }, 400 + Math.random() * 300);
+            }
+        });
+    });
+
+    resetBtn.addEventListener('click', resetGame);
+
+    function makeMove(idx, player) {
+        board[idx] = player;
+        const cell = cells[idx];
+        cell.textContent = player;
+        cell.classList.add('taken', player === HUMAN ? 'x-mark' : 'o-mark');
+
+        const winCombo = checkWin(player);
+        if (winCombo) {
+            gameActive = false;
+            highlightWin(winCombo);
+            if (player === HUMAN) {
+                scores.player++;
+                playerScoreEl.textContent = scores.player;
+                statusEl.textContent = '🎉 You won! Impressive.';
+                statusEl.className = 'game-status win';
+            } else {
+                scores.ai++;
+                aiScoreEl.textContent = scores.ai;
+                statusEl.textContent = '🤖 AI wins. Try again?';
+                statusEl.className = 'game-status lose';
+            }
+            return;
+        }
+
+        if (board.every(cell => cell !== null)) {
+            gameActive = false;
+            scores.draw++;
+            drawScoreEl.textContent = scores.draw;
+            statusEl.textContent = '🤝 Draw! Well played.';
+            statusEl.className = 'game-status draw';
+            return;
+        }
+
+        if (player === AI) {
+            gameActive = true;
+            statusEl.textContent = 'Your move — pick a square';
+            statusEl.className = 'game-status';
+        }
+    }
+
+    function checkWin(player) {
+        for (const combo of WIN_COMBOS) {
+            if (combo.every(i => board[i] === player)) return combo;
+        }
+        return null;
+    }
+
+    function highlightWin(combo) {
+        combo.forEach(i => cells[i].classList.add('winner-cell'));
+    }
+
+    function getEmpty() {
+        return board.reduce((acc, val, i) => val === null ? [...acc, i] : acc, []);
+    }
+
+    function getBestMove() {
+        const empty = getEmpty();
+
+        // Easy: random move
+        if (difficulty === 'easy') {
+            return empty[Math.floor(Math.random() * empty.length)];
+        }
+
+        // Medium: 50% optimal, 50% random
+        if (difficulty === 'medium' && Math.random() < 0.5) {
+            return empty[Math.floor(Math.random() * empty.length)];
+        }
+
+        // Hard (Unbeatable): full minimax
+        let bestScore = -Infinity;
+        let bestMove = empty[0];
+
+        for (const i of empty) {
+            board[i] = AI;
+            const score = minimax(board, 0, false);
+            board[i] = null;
+            if (score > bestScore) {
+                bestScore = score;
+                bestMove = i;
+            }
+        }
+        return bestMove;
+    }
+
+    function minimax(board, depth, isMaximizing) {
+        // Terminal checks
+        if (checkWin(AI)) return 10 - depth;
+        if (checkWin(HUMAN)) return depth - 10;
+        if (board.every(c => c !== null)) return 0;
+
+        if (isMaximizing) {
+            let best = -Infinity;
+            for (let i = 0; i < 9; i++) {
+                if (board[i] === null) {
+                    board[i] = AI;
+                    best = Math.max(best, minimax(board, depth + 1, false));
+                    board[i] = null;
+                }
+            }
+            return best;
+        } else {
+            let best = Infinity;
+            for (let i = 0; i < 9; i++) {
+                if (board[i] === null) {
+                    board[i] = HUMAN;
+                    best = Math.min(best, minimax(board, depth + 1, true));
+                    board[i] = null;
+                }
+            }
+            return best;
+        }
+    }
+
+    function resetGame() {
+        board = Array(9).fill(null);
+        gameActive = true;
+        cells.forEach(cell => {
+            cell.textContent = '';
+            cell.className = 'board-cell';
+        });
+        statusEl.textContent = 'Your move — pick a square';
+        statusEl.className = 'game-status';
+    }
+})();

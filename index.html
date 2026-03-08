@@ -39,6 +39,7 @@
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#publications">Publications</a></li>
                 <li><a href="#articles">Articles</a></li>
+                <li><a href="#play" class="nav-play">🎮 Play</a></li>
             </ul>
         </div>
     </nav>
@@ -715,6 +716,58 @@
         </div>
         -->
 
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+       AI TIC-TAC-TOE GAME
+       ========================================= -->
+    <section id="play" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title animate-in">
+                <span class="section-number">08.</span> Beat AI at Tic Tac Toe
+            </h2>
+            <p class="game-subtitle animate-in">Think you can outsmart a minimax algorithm? Give it a shot.</p>
+
+            <div class="game-wrapper animate-in">
+                <div class="game-controls">
+                    <div class="difficulty-select">
+                        <label>Difficulty:</label>
+                        <button class="diff-btn active" data-diff="hard">Unbeatable</button>
+                        <button class="diff-btn" data-diff="medium">Medium</button>
+                        <button class="diff-btn" data-diff="easy">Easy</button>
+                    </div>
+                    <div class="game-score">
+                        <div class="score-item">
+                            <span class="score-label">You (X)</span>
+                            <span class="score-value" id="playerScore">0</span>
+                        </div>
+                        <div class="score-item">
+                            <span class="score-label">Draws</span>
+                            <span class="score-value" id="drawScore">0</span>
+                        </div>
+                        <div class="score-item">
+                            <span class="score-label">AI (O)</span>
+                            <span class="score-value" id="aiScore">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-board" id="gameBoard">
+                    <div class="board-cell" data-cell="0"></div>
+                    <div class="board-cell" data-cell="1"></div>
+                    <div class="board-cell" data-cell="2"></div>
+                    <div class="board-cell" data-cell="3"></div>
+                    <div class="board-cell" data-cell="4"></div>
+                    <div class="board-cell" data-cell="5"></div>
+                    <div class="board-cell" data-cell="6"></div>
+                    <div class="board-cell" data-cell="7"></div>
+                    <div class="board-cell" data-cell="8"></div>
+                </div>
+
+                <div class="game-status" id="gameStatus">Your move — pick a square</div>
+                <button class="game-reset-btn" id="gameReset">New Game</button>
             </div>
         </div>
     </section>
