@@ -1,8 +1,4 @@
-/* ===========================================
-   Portfolio — Space-Themed AI Animations
-   Cosmic neural network, nebula particles,
-   typing effect, scroll animations, card glow
-   =========================================== */
+
 
 // Space color palette
 const SPACE_COLORS = [
